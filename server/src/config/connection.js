@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-let config = {
+const config = {
   database: process.env.DATABASE,
   user: process.env.DB_NAME,
   pass: process.env.PASSWORD,
@@ -17,6 +17,7 @@ const sequelize = new Sequelize(database, user, pass, {
   host,
   port,
   dialect: "mysql",
+  logging: false,
 });
 
 const connectDB = async () => {
