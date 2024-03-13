@@ -5,13 +5,14 @@ import { I_register } from "../../intefaces/register";
 import { useDispatch, useSelector } from "react-redux";
 import { login, register } from "../../store/slices/authSlice";
 import { AppDispatch, RootState } from "../../store/store";
+import Swal from "sweetalert2";
 
 const Login: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const [invalid, setInvalid] = useState<Array<any>>([]);
-  const { isLoggedIn } = useSelector((state: RootState) => state.auth);
+  const { isLoggedIn, msg } = useSelector((state: RootState) => state.auth);
   const [isRegister, setIsRegister] = useState<boolean>(location.state?.flag);
   const [payload, setPayload] = useState<I_register>({
     name: "",
@@ -26,6 +27,10 @@ const Login: React.FC = () => {
   useEffect(() => {
     isLoggedIn && navigate("/");
   }, [isLoggedIn]);
+
+  useEffect(() => {
+    msg && Swal.fire("Oops !", msg, "error");
+  }, [msg]);
 
   const handleSubmit = () => {
     let finalInvalids = isRegister
@@ -95,7 +100,7 @@ const Login: React.FC = () => {
             label={`HỌ TÊN`}
             value={payload?.name}
             setValue={setPayload}
-            type={"name"}
+            keyInput={"name"}
             inValids={invalid}
             setInvalid={setInvalid}
           />
@@ -104,7 +109,7 @@ const Login: React.FC = () => {
           label={`SỐ ĐIỆN THOẠI`}
           value={payload?.phone}
           setValue={setPayload}
-          type={"phone"}
+          keyInput={"phone"}
           inValids={invalid}
           setInvalid={setInvalid}
         />
@@ -112,9 +117,10 @@ const Login: React.FC = () => {
           label={`MẬT KHẨU`}
           value={payload?.password}
           setValue={setPayload}
-          type={"password"}
+          keyInput={"password"}
           inValids={invalid}
           setInvalid={setInvalid}
+          type='password'
         />
         <Button
           text={isRegister ? `Đăng ký` : "Đăng Nhập"}

@@ -5,12 +5,11 @@ module.exports = {
     await queryInterface.createTable("Images", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       images: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT("long"),
       },
       createdAt: {
         allowNull: false,

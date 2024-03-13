@@ -5,13 +5,13 @@ import { I_register } from '../../intefaces/register'
 interface Props {
     isLoggedIn: boolean
     token: string | null
-    msg: string
+    msg: string,
 }
 
 const initialState: Props = {
     isLoggedIn: false,
     token: null,
-    msg: ""
+    msg: "",
 }
 
 export const register = createAsyncThunk("register",

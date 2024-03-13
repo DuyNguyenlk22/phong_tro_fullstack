@@ -2,6 +2,7 @@ import db from "../models"; // mặc định chạy vào file index đầu tiên
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import { v4 } from "uuid";
 dotenv.config();
 
 const hashPassword = (password) => bcrypt.hashSync(password, bcrypt.genSaltSync(12));
@@ -12,6 +13,7 @@ export const registerService = ({ name, phone, password }) =>
       const response = await db.User.findOrCreate({
         where: { phone },
         defaults: {
+          id: v4(),
           phone,
           name,
           password: hashPassword(password),

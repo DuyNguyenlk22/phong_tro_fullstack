@@ -5,9 +5,8 @@ module.exports = {
     await queryInterface.createTable("Overviews", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       code: {
         type: Sequelize.STRING,
@@ -22,10 +21,10 @@ module.exports = {
         type: Sequelize.STRING,
       },
       created: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
       },
       expire: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
       },
       bonus: {
         type: Sequelize.STRING,
