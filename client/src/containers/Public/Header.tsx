@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className='w-1100 mx-auto flex items-center justify-between'>
+    <header className='w-4/5 lg:w-3/5 mx-auto flex items-center justify-between'>
       <NavLink to={path.HOME}>
         <img src={Logo} alt='logo' className='w-[240px] h-[70px] object-contain' />
       </NavLink>
