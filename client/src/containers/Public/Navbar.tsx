@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { I_categories } from "../../intefaces/categories";
-import { apiCategories } from "../../services/category";
-import { formatVietnameseToString } from "../../ultils/constant";
+import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { I_categories } from '../../intefaces/categories';
+import { apiCategories } from '../../services/category';
+import { formatVietnameseToString } from '../../ultils/common/format';
 
 const Navbar: React.FC = () => {
   const active = `block bg-third h-[40px] px-3 flex items-center text-center`;
   const notActive = `hover:bg-third duration-300 block h-[40px] px-3 flex items-center text-center`;
 
   const [categories, setCategories] = useState<I_categories[]>([]);
+
   useEffect(() => {
     const fetchCategories = async () => {
       const res: any = await apiCategories();
