@@ -21,11 +21,7 @@ const SearchItem: React.FC<Props> = ({ IconPreffix, IconSuffix, text, fontWeight
           {text}
         </span>
       </div>
-      {IconSuffix && (
-        <span>
-          <IconSuffix />
-        </span>
-      )}
+      {IconSuffix && <IconSuffix />}
     </div>
   );
 };

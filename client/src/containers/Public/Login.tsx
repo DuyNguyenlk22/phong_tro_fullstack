@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { InputForm, Button } from "../../components/Index";
-import { useLocation, useNavigate } from "react-router-dom";
-import { I_register } from "../../intefaces/register";
-import { useDispatch, useSelector } from "react-redux";
-import { login, register } from "../../store/slices/authSlice";
-import { AppDispatch, RootState } from "../../store/store";
-import Swal from "sweetalert2";
+import React, { useEffect, useState } from 'react';
+import { InputForm, Button } from '../../components/Index';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { I_register } from '../../intefaces/register';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, register } from '../../store/slices/authSlice';
+import { AppDispatch, RootState } from '../../store/store';
+import Swal from 'sweetalert2';
 
 const Login: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const [invalid, setInvalid] = useState<Array<any>>([]);
-  const { isLoggedIn, msg } = useSelector((state: RootState) => state.auth);
+  const { isLoggedIn, msg, isActive } = useSelector((state: RootState) => state.auth);
   const [isRegister, setIsRegister] = useState<boolean>(location.state?.flag);
   const [payload, setPayload] = useState<I_register>({
-    name: "",
-    phone: "",
-    password: "",
+    name: '',
+    phone: '',
+    password: '',
   });
 
   useEffect(() => {
@@ -25,12 +25,12 @@ const Login: React.FC = () => {
   }, [location.state?.flag]);
 
   useEffect(() => {
-    isLoggedIn && navigate("/");
+    isLoggedIn && navigate('/');
   }, [isLoggedIn]);
 
   useEffect(() => {
-    msg && Swal.fire("Oops !", msg, "error");
-  }, [msg]);
+    msg && Swal.fire('Oops !', msg, 'error');
+  }, [msg, isActive]);
 
   const handleSubmit = () => {
     let finalInvalids = isRegister
@@ -47,12 +47,12 @@ const Login: React.FC = () => {
     let inValids = 0;
     let fields: [string, any][] = Object.entries(payload);
     fields.forEach((item) => {
-      if (item[1] === "") {
+      if (item[1] === '') {
         setInvalid((prev: any) => [
           ...prev,
           {
             name: item[0],
-            message: "Bạn không được bỏ trống trường này !",
+            message: 'Bạn không được bỏ trống trường này !',
           },
         ]);
         inValids++;
@@ -60,25 +60,25 @@ const Login: React.FC = () => {
     });
     fields.forEach((item) => {
       switch (item[0]) {
-        case "password":
+        case 'password':
           if (item[1].length < 6) {
             setInvalid((prev: any) => [
               ...prev,
               {
                 name: item[0],
-                message: "Mật khẩu phải tối thiểu 6 ký tự",
+                message: 'Mật khẩu phải tối thiểu 6 ký tự',
               },
             ]);
             inValids++;
           }
           break;
-        case "phone":
+        case 'phone':
           if (!+item[1]) {
             setInvalid((prev: any) => [
               ...prev,
               {
                 name: item[0],
-                message: "Số điện thoại không hợp lệ",
+                message: 'Số điện thoại không hợp lệ',
               },
             ]);
             inValids++;
@@ -100,7 +100,7 @@ const Login: React.FC = () => {
             label={`HỌ TÊN`}
             value={payload?.name}
             setValue={setPayload}
-            keyInput={"name"}
+            keyInput={'name'}
             inValids={invalid}
             setInvalid={setInvalid}
           />
@@ -109,7 +109,7 @@ const Login: React.FC = () => {
           label={`SỐ ĐIỆN THOẠI`}
           value={payload?.phone}
           setValue={setPayload}
-          keyInput={"phone"}
+          keyInput={'phone'}
           inValids={invalid}
           setInvalid={setInvalid}
         />
@@ -117,13 +117,13 @@ const Login: React.FC = () => {
           label={`MẬT KHẨU`}
           value={payload?.password}
           setValue={setPayload}
-          keyInput={"password"}
+          keyInput={'password'}
           inValids={invalid}
           setInvalid={setInvalid}
           type='password'
         />
         <Button
-          text={isRegister ? `Đăng ký` : "Đăng Nhập"}
+          text={isRegister ? `Đăng ký` : 'Đăng Nhập'}
           textColor='text-white w-full py-3 font-bold text-sm'
           bgColor='bg-secondary'
           onClick={handleSubmit}
@@ -136,15 +136,15 @@ const Login: React.FC = () => {
               Bấm vào nút đăng ký tức là bạn đã đồng ý với quy định sử dụng của chúng tôi
             </p>
             <p className='text-sm'>
-              Bạn đã có tài khoản?{" "}
+              Bạn đã có tài khoản?{' '}
               <span
                 className='text-[blue] hover:underline cursor-pointer'
                 onClick={() => {
                   setIsRegister(false);
                   setPayload({
-                    name: "",
-                    phone: "",
-                    password: "",
+                    name: '',
+                    phone: '',
+                    password: '',
                   });
                 }}>
                 Đăng nhập ngay
@@ -161,9 +161,9 @@ const Login: React.FC = () => {
               onClick={() => {
                 setIsRegister(true);
                 setPayload({
-                  name: "",
-                  phone: "",
-                  password: "",
+                  name: '',
+                  phone: '',
+                  password: '',
                 });
               }}>
               Tạo tài khoản mới

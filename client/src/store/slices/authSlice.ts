@@ -6,12 +6,14 @@ interface Props {
     isLoggedIn: boolean
     token: string | null
     msg: string,
+    isActive: boolean
 }
 
 const initialState: Props = {
     isLoggedIn: false,
     token: null,
     msg: "",
+    isActive: false
 }
 
 export const register = createAsyncThunk("register",
@@ -73,6 +75,7 @@ const authSlice = createSlice({
             state.isLoggedIn = isLoggedIn
             state.token = token
             state.msg = msg
+            state.isActive = !state.isActive
         },
         setLogOut: (state) => {
             state.isLoggedIn = false
