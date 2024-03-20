@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import {
   Home,
   HomePage,
@@ -8,15 +8,15 @@ import {
   RentalHouse,
   RentalRoom,
   RentalSpace,
-} from "./containers/Public/Index";
-import { path } from "./ultils/constant";
+} from './containers/Public/Index';
+import { path } from './ultils/constant';
 
 export const App: React.FC = () => {
   return (
-    <main className='w-screen h-screen bg-primary'>
+    <main className='w-full h-full bg-primary'>
       <Routes>
         <Route path={path.HOME} element={<Home />}>
-          <Route path={"*"} element={<HomePage />} />
+          <Route path={'*'} element={<HomePage />} />
           <Route path={path.LOGIN} element={<Login />} />
           <Route path={path.CHO_THUE_CAN_HO} element={<RentalApartment />} />
           <Route path={path.NHA_CHO_THUE} element={<RentalHouse />} />
