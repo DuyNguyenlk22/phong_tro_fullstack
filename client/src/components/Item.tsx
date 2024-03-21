@@ -1,20 +1,35 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import icons from '../ultils/icons';
 import { NavLink } from 'react-router-dom';
 
 const { PiHeartStraightLight, PiHeartStraightFill, RiStarSFill } = icons;
 
 const Item: React.FC = () => {
+  const [isHoverHeart, setIsHoverHeart] = useState<boolean>(false);
+
   return (
-    <div className='w-full flex py-[15px] gap-4 border-t-[1px] border-t-red-500 p-4'>
-      <div className='w-[35%]'>
+    <div className='w-full flex py-[15px] border-t border-t-orange-500'>
+      <div className='w-2/5 relative cursor-pointer'>
         <img
           src='https://pt123.cdn.static123.com/images/thumbs/900x600/fit/2024/03/06/img-20231106-082351_1709737125.jpg'
           alt='...'
           className='w-[280px] h-[240px] object-cover'
         />
+        <span className='py-[3px] px-[5px] rounded bg-[#312F28] text-white text-sm absolute bottom-3 left-1'>
+          5 ảnh
+        </span>
+        <span
+          className='absolute bottom-3 right-1'
+          onMouseEnter={() => setIsHoverHeart(true)}
+          onMouseLeave={() => setIsHoverHeart(false)}>
+          {isHoverHeart ? (
+            <PiHeartStraightFill color='red' size={26} />
+          ) : (
+            <PiHeartStraightLight color='white' size={26} />
+          )}
+        </span>
       </div>
-      <div className='w-[65%]'>
+      <div className='w-3/5 ml-[15px]'>
         <div>
           <div>
             {Array.from({ length: 5 }, (_, index: number) => {
@@ -31,7 +46,7 @@ const Item: React.FC = () => {
           </div>
 
           <div>
-            <span className='mr-5 text-[#16c784]'>4.3 triệu/tháng</span>
+            <span className='mr-5 text-[#16c784] font-bold'>4.3 triệu/tháng</span>
             <span className='mr-5'>40m²</span>
             <div className='flex justify-between'>
               <p className='hover:underline'>
@@ -43,12 +58,10 @@ const Item: React.FC = () => {
             </div>
           </div>
 
-          <div className='text-[#8a8d91] my-[10px] text-sm'>
-            <p>
-              CHÍNH CHỦ CHO THUÊ PHÒNG - ĐƯỜNG NGUYỄN XÍ, Q. BÌNH THẠNH- Địa chỉ: 250/1 Nguyễn Xí,
-              Phường 13, Q. Bình Thạnh.- Nhà trệt. Vị trí rất thuận tiện: Ngay…
-            </p>
-          </div>
+          <p className='text-[#8a8d91] w-full h-[50px] text-ellipsis overflow-hidden'>
+            CHÍNH CHỦ CHO THUÊ PHÒNG - ĐƯỜNG NGUYỄN XÍ, Q. BÌNH THẠNH- Địa chỉ: 250/1 Nguyễn Xí,
+            Phường 13, Q. Bình Thạnh.- Nhà trệt. Vị trí rất thuận tiện: Ngay…
+          </p>
           <div className='flex items-center justify-between mt-4'>
             <div className='flex items-center'>
               <img
@@ -59,10 +72,10 @@ const Item: React.FC = () => {
               <span className='text-[#8a8d91] text-sm'>Nguyen Van Hang</span>
             </div>
             <div className='flex items-center'>
-              <button className='py-[3px] px-[7px] bg-[#1266dd] rounded-md text-white inline-block text-sm mr-1'>
+              <button className='p-1 bg-[#1266dd] rounded-md text-white inline-block text-sm mr-1'>
                 Gọi 0918673339
               </button>
-              <button className='py-[3px] px-[7px] border-2 border-[#1266dd] rounded-md text-[#1266dd] inline-block text-sm'>
+              <button className='p-1 border border-[#1266dd] rounded-md text-[#1266dd] inline-block text-sm'>
                 Nhắn Zalo
               </button>
             </div>

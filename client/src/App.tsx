@@ -13,7 +13,7 @@ import { path } from './ultils/constant';
 
 export const App: React.FC = () => {
   return (
-    <main className='w-full h-full bg-primary'>
+    <main className='bg-primary'>
       <Routes>
         <Route path={path.HOME} element={<Home />}>
           <Route path={'*'} element={<HomePage />} />

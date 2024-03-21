@@ -9,7 +9,7 @@ const Home: React.FC = () => {
       <Header />
       <Navbar />
       <SearchBar />
-      <div className='w-4/5 lg:w-3/5 flex flex-col justify-start items-start mt-3'>
+      <div className='w-[90%] lg:w-[65%] flex flex-col justify-start items-start mt-3'>
         <Outlet />
       </div>
     </div>

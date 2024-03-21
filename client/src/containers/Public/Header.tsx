@@ -1,12 +1,12 @@
-import React, { useCallback } from "react";
-import Logo from "../../assets/logo.png";
-import { Button } from "../../components/Index";
-import icons from "../../ultils/icons";
-import { NavLink, useNavigate } from "react-router-dom";
-import { path } from "../../ultils/constant";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../store/store";
-import { setLogOut } from "../../store/slices/authSlice";
+import React, { useCallback } from 'react';
+import Logo from '../../assets/logo.png';
+import { Button } from '../../components/Index';
+import icons from '../../ultils/icons';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { path } from '../../ultils/constant';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store/store';
+import { setLogOut } from '../../store/slices/authSlice';
 
 const { CiCirclePlus } = icons;
 
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className='w-4/5 lg:w-3/5 mx-auto flex items-center justify-between'>
+    <header className='w-[90%] lg:w-[65%] mx-auto flex items-center justify-between'>
       <NavLink to={path.HOME}>
         <img src={Logo} alt='logo' className='w-[240px] h-[70px] object-contain' />
       </NavLink>

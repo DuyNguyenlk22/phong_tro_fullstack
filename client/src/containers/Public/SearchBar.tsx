@@ -14,7 +14,7 @@ const {
 
 const SearchBar: React.FC = () => {
   return (
-    <div className='p-[10px] w-3/5 my-2 bg-fourth rounded-lg gap-2 flex-col lg:flex-row flex items-center justify-around '>
+    <div className='p-[10px] w-[90%] lg:w-[65%] my-2 bg-fourth rounded-lg gap-2 flex-col lg:flex-row flex items-center justify-around '>
       <SearchItem
         text={'Phòng trọ, nhà trọ'}
         IconPreffix={HiOutlineBuildingOffice}
@@ -28,7 +28,7 @@ const SearchBar: React.FC = () => {
       />
       <SearchItem text={'Chọn giá'} IconPreffix={GrTag} IconSuffix={BsChevronRight} />
       <SearchItem text={'Chọn diện tích'} IconPreffix={LiaCropSolid} IconSuffix={BsChevronRight} />
-      <button className='outline-none px-2 w-full bg-secondary flex items-center justify-center text-white text-sm font-medium h-full rounded-[5px]'>
+      <button className='outline-none w-full h-[35px] bg-secondary flex items-center justify-center text-white text-sm font-medium rounded-[5px]'>
         <CiSearch /> Tìm kiếm
       </button>
     </div>

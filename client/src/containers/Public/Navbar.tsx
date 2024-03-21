@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav id='navbar-menu' className='w-full h-[40[px] bg-secondary'>
-      <ul className='mx-auto w-4/5 lg:w-3/5 flex text-white font-bold text-sm'>
+      <ul className='mx-auto w-[90%] lg:w-[65%] flex text-white font-bold text-sm'>
         <NavLink to={`/`} className={({ isActive }) => (isActive ? active : notActive)}>
           Trang chủ
         </NavLink>

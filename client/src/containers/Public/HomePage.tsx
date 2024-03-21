@@ -11,7 +11,7 @@ const HomePage: React.FC = () => {
         <p className='text-[#65676b] text-sm'>{text.HOME_DESCRIPTION}</p>
       </div>
       <Province />
-      <div className='flex gap-4'>
+      <div className='flex gap-4 w-full'>
         <div className='w-[70%]'>
           <List />
         </div>
