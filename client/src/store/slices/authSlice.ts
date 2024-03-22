@@ -36,6 +36,7 @@ export const register = createAsyncThunk("register",
         } catch (error) {
             dispatch(setAuthStatus({
                 isLoggedIn: false,
+                token: null,
                 msg: "Error..."
             }))
         }
@@ -61,6 +62,7 @@ export const login = createAsyncThunk("login",
         } catch (error) {
             dispatch(setAuthStatus({
                 isLoggedIn: false,
+                token: null,
                 msg: "Error..."
             }))
         }

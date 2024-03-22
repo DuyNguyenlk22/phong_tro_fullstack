@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { I_categories } from '../../intefaces/categories';
-import { apiCategories } from '../../services/category';
+import { apiGetCategories } from '../../services/category';
 import { formatVietnameseToString } from '../../ultils/common/format';
 
 const Navbar: React.FC = () => {
@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const res: any = await apiCategories();
+      const res: any = await apiGetCategories();
       if (res.data.err === 0) setCategories(res.data.response);
     };
     fetchCategories();
