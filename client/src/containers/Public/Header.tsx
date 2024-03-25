@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import Logo from '../../assets/logo.png';
 import { Button } from '../../components/Index';
 import icons from '../../ultils/icons';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useSearchParams } from 'react-router-dom';
 import { path } from '../../ultils/constant';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
@@ -13,14 +13,21 @@ const { CiCirclePlus } = icons;
 const Header: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+  const [searchParam] = useSearchParams();
+  const headerRef = useRef<any>();
   const { isLoggedIn } = useSelector((state: RootState) => state.auth);
 
   const goLogin = useCallback((flag: boolean) => {
     navigate(path.LOGIN, { state: { flag } });
   }, []);
+  useEffect(() => {
+    headerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [searchParam.get('page')]);
 
   return (
-    <header className='w-[90%] lg:w-[65%] mx-auto flex items-center justify-between'>
+    <header
+      ref={headerRef}
+      className='w-[90%] lg:w-[65%] mx-auto flex items-center justify-between'>
       <NavLink to={path.HOME}>
         <img src={Logo} alt='logo' className='w-[240px] h-[70px] object-contain' />
       </NavLink>

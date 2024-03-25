@@ -8,6 +8,7 @@ import { LiaCropSolid } from "react-icons/lia";
 import { CiSearch } from "react-icons/ci";
 import { RiStarSFill } from "react-icons/ri";
 import { PiHeartStraightLight, PiHeartStraightFill } from "react-icons/pi";
+import { MdNavigateNext, MdChevronLeft } from "react-icons/md";
 
 const icons = {
     CiCirclePlus,
@@ -20,7 +21,9 @@ const icons = {
     CiSearch,
     RiStarSFill,
     PiHeartStraightLight,
-    PiHeartStraightFill
+    PiHeartStraightFill,
+    MdNavigateNext,
+    MdChevronLeft
 }
 
 export default icons

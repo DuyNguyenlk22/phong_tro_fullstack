@@ -18,7 +18,6 @@ type Props = {
 
 const Item: React.FC<Props> = ({ address, attributes, images, star, title, user, description }) => {
   const [isHoverHeart, setIsHoverHeart] = useState<boolean>(false);
-
   return (
     <div className='w-full flex py-[15px] border-t border-t-orange-500'>
       <div className='w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer'>
@@ -34,12 +33,11 @@ const Item: React.FC<Props> = ({ address, attributes, images, star, title, user,
             );
           }
         })}
-
         <span className='py-[3px] px-[5px] rounded bg-[#312F28] text-white text-sm absolute bottom-3 left-1'>
           {images.length} ảnh
         </span>
         <span
-          className='absolute bottom-3 right-1'
+          className='absolute bottom-3 right-3'
           onMouseEnter={() => setIsHoverHeart(true)}
           onMouseLeave={() => setIsHoverHeart(false)}>
           {isHoverHeart ? (
@@ -62,20 +60,21 @@ const Item: React.FC<Props> = ({ address, attributes, images, star, title, user,
             })}
             <span className='text-red-600 font-semibold ml-1'>{title}</span>
           </div>
-
           <div>
             <span className='mr-5 text-[#16c784] font-bold'>{attributes.price}</span>
             <span className='mr-5'>{attributes.acreage}</span>
             <div className='flex justify-between'>
               <p className='hover:underline'>
-                <NavLink to={'/'}>{address}</NavLink>
+                <NavLink to={'/'}>
+                  {`${address.split(',')[address.split(',').length - 2]},
+                ${address.split(',')[address.split(',').length - 1]}`}
+                </NavLink>
               </p>
               <time title='Thứ 4, 11:06 20/03/2024' className='text-[#aaa] text-sm'>
                 {attributes.published}
               </time>
             </div>
           </div>
-
           <p className='text-[#8a8d91] w-full h-[50px] text-ellipsis overflow-hidden whitespace-pre-line'>
             {description}
           </p>

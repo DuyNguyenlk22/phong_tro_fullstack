@@ -1,9 +1,11 @@
 import React from 'react';
 import { text } from '../../ultils/constant';
 import { Province } from '../../components/Index';
-import { List } from './Index';
+import { List, Pagination } from './Index';
+import { useSearchParams } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
+  const [param] = useSearchParams();
   return (
     <div className='w-full flex flex-col gap-3'>
       <div>
@@ -13,7 +15,8 @@ const HomePage: React.FC = () => {
       <Province />
       <div className='flex gap-4 w-full'>
         <div className='w-[70%]'>
-          <List />
+          <List page={param.get('page')} />
+          <Pagination page={param.get('page')} />
         </div>
         <div className='w-[30%] border-2 border-green-500'>SideBar</div>
       </div>

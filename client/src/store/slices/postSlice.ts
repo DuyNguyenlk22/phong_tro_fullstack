@@ -1,22 +1,23 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { apiGetAllPosts } from '../../services/post';
+import { apiGetAllPosts, apiGetPostsLimit } from '../../services/post';
 import { I_Post } from '../../intefaces/post';
 
 interface Props {
     posts: I_Post[] | []
     msg: string | ""
+    count: number
 }
 
 const initialState: Props = {
     posts: [],
-    msg: ""
+    msg: "",
+    count: 0
 }
 
 export const getPosts = createAsyncThunk("posts/getAll",
     async (_, { dispatch }) => {
         try {
             const res: any = await apiGetAllPosts()
-            console.log("🐼🐸 ~ res🚀", res)
             if (res.data.err === 0) {
                 dispatch(setPosts({
                     post: res.data.response,
@@ -33,14 +34,38 @@ export const getPosts = createAsyncThunk("posts/getAll",
 
         }
     })
+export const getPostsLimit = createAsyncThunk("posts/getLimit",
+    async (page: number, { dispatch }) => {
+        try {
+            const res: any = await apiGetPostsLimit(page)
+            if (res.data.err === 0) {
+                dispatch(setPosts({
+                    post: res.data.response?.rows,
+                    count: res.data.response?.count,
+                    msg: res.data.msg
+                }))
+            } else {
+                dispatch(setPosts({
+                    post: [],
+                    count: 0,
+                    msg: res.data.msg
+                }))
+            }
+        } catch (error) {
+            throw error
+
+        }
+    })
 
 const postSlice = createSlice({
     name: "posts",
     initialState,
     reducers: {
         setPosts: (state, { payload }) => {
-            state.posts = payload.post
-            state.msg = payload.msg
+            let { post, count, msg } = payload
+            state.posts = post
+            state.count = count
+            state.msg = msg
         }
     }
 });

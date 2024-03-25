@@ -9,4 +9,5 @@ export { default as RentalSpace } from "./RentalSpace";
 export { default as HomePage } from "./HomePage";
 export { default as SearchBar } from "./SearchBar";
 export { default as List } from "./List";
+export { default as Pagination } from "./Pagination";
 
