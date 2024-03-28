@@ -5,7 +5,8 @@ export const path = {
     CHO_THUE_CAN_HO: "cho-thue-can-ho",
     NHA_CHO_THUE: "nha-cho-thue",
     CHO_THUE_MAT_BANG: "mat-bang,-van-phong",
-    CHO_THUE_PHONG_TRO: "cho-thue-phong-tro"
+    CHO_THUE_PHONG_TRO: "cho-thue-phong-tro",
+    DETAIL_POST__TITLE__POSTID: "chi-tiet/:title/:postId"
 }
 
 export const text = {

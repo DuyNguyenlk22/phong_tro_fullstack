@@ -40,6 +40,7 @@ const List: React.FC<Props> = ({ page }) => {
                 title={item.title}
                 user={item.user}
                 description={JSON.parse(item.description)}
+                id={item.id}
               />
             );
           })}

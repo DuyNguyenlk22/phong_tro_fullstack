@@ -11,7 +11,7 @@ type Props = {
 
 const notActive = `w-[46px] h-[48px] flex justify-center items-center bg-white hover:bg-gray-200 rounded`;
 const active = `w-[46px] h-[48px] flex justify-center items-center bg-[#e13427] text-white rounded`;
-const PageNumber: React.FC<Props> = ({ text, icon, currentPage, setCurrentPage, type }) => {
+const PageNumber: React.FC<Props> = ({ text, icon, currentPage, setCurrentPage }) => {
   const navigate = useNavigate();
   const handleChangePage = () => {
     if (!(text === '...')) {

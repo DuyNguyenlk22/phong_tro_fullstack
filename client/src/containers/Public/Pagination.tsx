@@ -6,14 +6,12 @@ import icons from '../../ultils/icons';
 
 const { MdNavigateNext, MdChevronLeft } = icons;
 
-type Props = {
-  page: string | null;
-};
+type Props = { page: string | null };
 
 const Pagination: React.FC<Props> = ({ page }) => {
   const { posts, count } = useSelector((state: RootState) => state.postSlice);
   const [arrPage, setArrPage] = useState<number[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(Number(page));
+  const [currentPage, setCurrentPage] = useState<number>(Number(page) || 1);
   const [isHideEnd, setIsHideEnd] = useState(false);
   const [isHideStart, setIsHideStart] = useState(false);
 

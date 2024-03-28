@@ -3,10 +3,12 @@ import icons from '../ultils/icons';
 import { NavLink } from 'react-router-dom';
 import { I_Attributes } from '../intefaces/attributes';
 import { I_User } from '../intefaces/user';
+import { formatVietnameseToString } from '../ultils/common/format';
 
 const { PiHeartStraightLight, PiHeartStraightFill, RiStarSFill } = icons;
 
 type Props = {
+  id: string;
   address: string;
   attributes: I_Attributes;
   images: string[];
@@ -16,11 +18,22 @@ type Props = {
   description: string;
 };
 
-const Item: React.FC<Props> = ({ address, attributes, images, star, title, user, description }) => {
+const Item: React.FC<Props> = ({
+  address,
+  attributes,
+  images,
+  star,
+  title,
+  user,
+  description,
+  id,
+}) => {
   const [isHoverHeart, setIsHoverHeart] = useState<boolean>(false);
   return (
     <div className='w-full flex py-[15px] border-t border-t-orange-500'>
-      <div className='w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer'>
+      <NavLink
+        to={`chi-tiet/${formatVietnameseToString(title)}/${id}`}
+        className='w-2/5 flex flex-wrap gap-[2px] items-center relative cursor-pointer'>
         {images.map((item, index) => {
           if (index < 4) {
             return (
@@ -46,7 +59,7 @@ const Item: React.FC<Props> = ({ address, attributes, images, star, title, user,
             <PiHeartStraightLight color='white' size={26} />
           )}
         </span>
-      </div>
+      </NavLink>
       <div className='w-3/5 '>
         <div>
           <div>
@@ -58,7 +71,9 @@ const Item: React.FC<Props> = ({ address, attributes, images, star, title, user,
                 />
               );
             })}
-            <span className='text-red-600 font-semibold ml-1'>{title}</span>
+            <span className='text-red-600 font-semibold ml-1 cursor-pointer hover:underline'>
+              {title}
+            </span>
           </div>
           <div>
             <span className='mr-5 text-[#16c784] font-bold'>{attributes.price}</span>
