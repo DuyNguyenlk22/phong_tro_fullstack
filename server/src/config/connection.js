@@ -1,14 +1,16 @@
-import { Sequelize } from "sequelize";
-import dotenv from "dotenv";
+import { Sequelize } from 'sequelize';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
+const { DATABASE, DB_NAME, PASSWORD, HOST, DB_PORT } = process.env;
+
 const config = {
-  database: process.env.DATABASE,
-  user: process.env.DB_NAME,
-  pass: process.env.PASSWORD,
-  host: process.env.HOST,
-  port: process.env.DB_PORT,
+  database: DATABASE,
+  user: DB_NAME,
+  pass: PASSWORD,
+  host: HOST,
+  port: DB_PORT,
 };
 
 const { database, user, pass, host, port } = config;
@@ -16,16 +18,16 @@ const { database, user, pass, host, port } = config;
 const sequelize = new Sequelize(database, user, pass, {
   host,
   port,
-  dialect: "mysql",
+  dialect: 'mysql',
   logging: false,
 });
 
 const connectDB = async () => {
   try {
     await sequelize.authenticate();
-    console.log("Connection has been established successfully.");
+    console.log('Connection has been established successfully.');
   } catch (error) {
-    console.error("Unable to connect to the database:", error);
+    console.error('Unable to connect to the database:', error);
   }
 };
 

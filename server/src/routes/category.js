@@ -1,8 +1,8 @@
-import express from "express";
-import { getListCategory } from "../controllers/category.js";
+import express from 'express';
+import * as categoryController from '../controllers/category.js';
 
 const cateRoute = express.Router();
 
-cateRoute.get("/all", getListCategory);
+cateRoute.get('/all', categoryController.getListCategory);
 
 export default cateRoute;

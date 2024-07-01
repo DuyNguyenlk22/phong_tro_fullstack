@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Posts", {
+    await queryInterface.createTable('Posts', {
       id: {
         allowNull: false,
         primaryKey: true,
@@ -13,7 +13,7 @@ module.exports = {
       },
       star: {
         type: Sequelize.STRING,
-        defaultValue: "0",
+        defaultValue: '0',
       },
       labelCode: {
         type: Sequelize.STRING,
@@ -22,6 +22,12 @@ module.exports = {
         type: Sequelize.STRING,
       },
       categoryCode: {
+        type: Sequelize.STRING,
+      },
+      priceCode: {
+        type: Sequelize.STRING,
+      },
+      acreageCode: {
         type: Sequelize.STRING,
       },
       address: {
@@ -50,6 +56,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Posts");
+    await queryInterface.dropTable('Posts');
   },
 };

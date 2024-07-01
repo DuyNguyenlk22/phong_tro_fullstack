@@ -13,6 +13,7 @@ import {
 import autoMergeLevel2 from "redux-persist/es/stateReconciler/autoMergeLevel2";
 import persistStore from "redux-persist/es/persistStore";
 import postSlice from "./slices/postSlice";
+import navSlice from "./slices/navSlice";
 
 const commonConfig = {
     storage,
@@ -29,7 +30,8 @@ export const store = configureStore({
     reducer: {
         auth: persistReducer<any>(authConfig, authSlice),
         userSlice,
-        postSlice
+        postSlice,
+        navSlice
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

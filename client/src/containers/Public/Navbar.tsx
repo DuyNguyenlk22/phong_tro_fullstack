@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { I_categories } from '../../intefaces/categories';
-import { apiGetCategories } from '../../services/category';
 import { formatVietnameseToString } from '../../ultils/common/format';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store/store';
+import { getCategories } from '../../store/slices/navSlice';
 
 const Navbar: React.FC = () => {
   const active = `block bg-third h-[40px] px-3 flex items-center text-center`;
   const notActive = `hover:bg-third duration-300 block h-[40px] px-3 flex items-center text-center`;
 
-  const [categories, setCategories] = useState<I_categories[]>([]);
+  const dispatch = useDispatch<AppDispatch>();
+  const { categories } = useSelector((state: RootState) => state.navSlice);
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      const res: any = await apiGetCategories();
-      if (res.data.err === 0) setCategories(res.data.response);
-    };
-    fetchCategories();
+    dispatch(getCategories());
   }, []);
 
   return (

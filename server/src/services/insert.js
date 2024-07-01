@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import chothuecanho from '../../data/chothuecanho.json';
 import generateCode from '../ultis/generateCode';
 import { v4 } from 'uuid';
+import { dataAcreage, dataPrice } from '../ultis/data';
+import { getNumberFromString } from '../ultis/common';
 dotenv.config();
 
 const dataBody = chothuecanho.body;
@@ -15,6 +17,8 @@ export const insertService = () =>
     try {
       dataBody.forEach(async (item) => {
         let labelCode = generateCode(item?.header?.class?.classType);
+        let curAcreage = getNumberFromString(item.header?.attributes?.acreage);
+        let curPrice = getNumberFromString(item.header?.attributes?.price);
         let attributeId = v4();
         let userId = v4();
         let overviewId = v4();
@@ -28,14 +32,17 @@ export const insertService = () =>
           labelCode,
           address: item?.header?.address,
           attributeId,
-          categoryCode: 'CTCH',
+          categoryCode: 'NCT',
           description: JSON.stringify(item?.mainContent?.content),
           userId,
           overviewId,
           imagesId,
+          acreageCode: dataAcreage.find((area) => area.max >= curAcreage && area.min <= curAcreage)
+            ?.code,
+          priceCode: dataPrice.find((price) => price.max >= curPrice && price.min <= curPrice)
+            ?.code,
         });
         //* tabel attribute
-
         await db.Attribute.create({
           id: attributeId,
           price: item?.header?.attributes?.price,
@@ -77,6 +84,29 @@ export const insertService = () =>
         });
       });
       resolve('Done');
+    } catch (error) {
+      reject(error);
+    }
+  });
+
+export const createPricesAndAreas = () =>
+  new Promise((resolve, reject) => {
+    try {
+      dataPrice.forEach(async (item, index) => {
+        await db.Price.create({
+          code: item.code,
+          value: item.value,
+          order: index + 1,
+        });
+      });
+      dataAcreage.forEach(async (item, index) => {
+        await db.Acreage.create({
+          code: item.code,
+          value: item.value,
+          order: index + 1,
+        });
+      });
+      resolve('OK');
     } catch (error) {
       reject(error);
     }
