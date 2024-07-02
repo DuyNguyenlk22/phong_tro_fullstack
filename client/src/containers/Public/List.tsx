@@ -12,7 +12,8 @@ const List: React.FC<Props> = ({ page }) => {
 
   useEffect(() => {
     let offset = page ? +page - 1 : 0;
-    dispatch(getPostsLimit(offset));
+    let query = { page: offset };
+    dispatch(getPostsLimit(query));
   }, [page]);
 
   return (

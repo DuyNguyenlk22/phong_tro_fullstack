@@ -1,4 +1,5 @@
 import db from '../models';
+import { Op } from 'sequelize';
 
 export const getPosts = () =>
   new Promise(async (resolve, reject) => {
@@ -30,10 +31,11 @@ export const getPosts = () =>
       reject(error);
     }
   });
-export const getPostsLimit = (page) =>
+export const getPostsLimit = (page, query) =>
   new Promise(async (resolve, reject) => {
     try {
       const response = await db.Post.findAndCountAll({
+        where: query,
         raw: true,
         nest: true,
         offset: +page * +process.env.LIMIT || 0,

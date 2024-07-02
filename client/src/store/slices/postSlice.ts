@@ -35,9 +35,9 @@ export const getPosts = createAsyncThunk("posts/getAll",
         }
     })
 export const getPostsLimit = createAsyncThunk("posts/getLimit",
-    async (page: number, { dispatch }) => {
+    async (query: any, { dispatch }) => {
         try {
-            const res: any = await apiGetPostsLimit(page)
+            const res: any = await apiGetPostsLimit(query)
             if (res.data.err === 0) {
                 dispatch(setPosts({
                     post: res.data.response?.rows,

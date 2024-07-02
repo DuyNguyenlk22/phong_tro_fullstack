@@ -30,8 +30,13 @@ const HomePage: React.FC = () => {
         </div>
         <div className='w-[30%] flex flex-col justify-start items-center gap-5'>
           <ItemSidebar isDouble={false} content={categories} title='Danh mục cho thuê' />
-          <ItemSidebar isDouble={true} content={prices} title='Xem theo giá' />
-          <ItemSidebar isDouble={true} content={acreages} title='Xem theo diện tích' />
+          <ItemSidebar type='priceCode' isDouble={true} content={prices} title='Xem theo giá' />
+          <ItemSidebar
+            type='acreageCode'
+            isDouble={true}
+            content={acreages}
+            title='Xem theo diện tích'
+          />
         </div>
       </div>
     </div>
