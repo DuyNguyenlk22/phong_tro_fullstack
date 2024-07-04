@@ -3,20 +3,26 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import PageNumber from '../../components/PageNumber';
 import icons from '../../ultils/icons';
+import { useSearchParams } from 'react-router-dom';
 
 const { MdNavigateNext, MdChevronLeft } = icons;
 
-type Props = { page: string | null };
-
-const Pagination: React.FC<Props> = ({ page }) => {
+const Pagination: React.FC = () => {
   const { posts, count } = useSelector((state: RootState) => state.postSlice);
   const [arrPage, setArrPage] = useState<number[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(Number(page) || 1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [isHideEnd, setIsHideEnd] = useState(false);
   const [isHideStart, setIsHideStart] = useState(false);
+  const [searchParams] = useSearchParams();
+  const limitPost = import.meta.env.VITE_LIMIT_POST;
 
   useEffect(() => {
-    let maxPage = Math.ceil(count / posts.length);
+    let page = searchParams.get('page');
+    page && +page !== currentPage && setCurrentPage(+page);
+    !page && setCurrentPage(1);
+  }, [searchParams]);
+  useEffect(() => {
+    let maxPage = Math.ceil(count / limitPost);
     let end = currentPage + 1 > maxPage ? maxPage : currentPage + 1;
     let start = currentPage - 1 <= 0 ? 1 : currentPage - 1;
     let temp = [];
@@ -33,12 +39,7 @@ const Pagination: React.FC<Props> = ({ page }) => {
       {arrPage.length > 0 &&
         arrPage.map((item) => {
           return (
-            <PageNumber
-              key={item}
-              text={item}
-              currentPage={Number(page) || 1}
-              setCurrentPage={setCurrentPage}
-            />
+            <PageNumber key={item} text={item} currentPage={1} setCurrentPage={setCurrentPage} />
           );
         })}
       {!isHideEnd && <PageNumber text={'...'} />}

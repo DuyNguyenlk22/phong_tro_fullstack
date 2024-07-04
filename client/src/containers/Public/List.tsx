@@ -3,18 +3,24 @@ import { Button, Item } from '../../components/Index';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store/store';
 import { getPostsLimit } from '../../store/slices/postSlice';
+import { useSearchParams } from 'react-router-dom';
 
-type Props = { page: string | null };
-
-const List: React.FC<Props> = ({ page }) => {
+const List: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const [searchParams] = useSearchParams();
   const { posts } = useSelector((state: RootState) => state.postSlice);
 
   useEffect(() => {
-    let offset = page ? +page - 1 : 0;
-    let query = { page: offset };
-    dispatch(getPostsLimit(query));
-  }, [page]);
+    let params: any[] = [];
+    for (let entry of searchParams.entries()) {
+      params.push(entry);
+    }
+    let searchParamObject = {};
+    params.map((i) => {
+      searchParamObject = { ...searchParamObject, [i[0]]: i[1] };
+    });
+    dispatch(getPostsLimit(searchParamObject));
+  }, [searchParams]);
 
   return (
     <div className='w-full p-2 bg-white shadow-md rounded-md border-[1px] border-[#dedede] px-6'>

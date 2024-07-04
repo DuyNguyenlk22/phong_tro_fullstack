@@ -37,10 +37,9 @@ export const insertService = () =>
           userId,
           overviewId,
           imagesId,
-          acreageCode: dataAcreage.find((area) => area.max >= curAcreage && area.min <= curAcreage)
+          acreageCode: dataAcreage.find((area) => area.max > curAcreage && area.min <= curAcreage)
             ?.code,
-          priceCode: dataPrice.find((price) => price.max >= curPrice && price.min <= curPrice)
-            ?.code,
+          priceCode: dataPrice.find((price) => price.max > curPrice && price.min <= curPrice)?.code,
         });
         //* tabel attribute
         await db.Attribute.create({

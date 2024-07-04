@@ -8,13 +8,13 @@ import { AppDispatch, RootState } from '../../store/store';
 import { getAcreages, getPrices } from '../../store/slices/navSlice';
 
 const HomePage: React.FC = () => {
-  const [param] = useSearchParams();
+  const [params] = useSearchParams();
   const dispatch = useDispatch<AppDispatch>();
   const { categories, prices, acreages } = useSelector((state: RootState) => state.navSlice);
   useEffect(() => {
     dispatch(getPrices());
     dispatch(getAcreages());
-  }, []);
+  }, [params]);
 
   return (
     <div className='w-full flex flex-col gap-3'>
@@ -25,8 +25,8 @@ const HomePage: React.FC = () => {
       <Province />
       <div className='flex gap-4 w-full'>
         <div className='w-[70%]'>
-          <List page={param.get('page')} />
-          <Pagination page={param.get('page')} />
+          <List />
+          <Pagination />
         </div>
         <div className='w-[30%] flex flex-col justify-start items-center gap-5'>
           <ItemSidebar isDouble={false} content={categories} title='Danh mục cho thuê' />
