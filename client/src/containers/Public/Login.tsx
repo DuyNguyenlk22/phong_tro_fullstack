@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { InputForm, Button } from '../../components/Index';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { I_register } from '../../intefaces/register';
+import { I_register } from '../../types/register';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, register } from '../../store/slices/authSlice';
 import { AppDispatch, RootState } from '../../store/store';

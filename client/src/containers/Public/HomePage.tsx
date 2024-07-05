@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { text } from '../../ultils/constant';
-import { ItemSidebar, Province } from '../../components/Index';
+import { text } from '../../utils/constant';
+import { ItemSidebar, Province, RelatedPost } from '../../components/Index';
 import { List, Pagination } from './Index';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,7 +24,7 @@ const HomePage: React.FC = () => {
       </div>
       <Province />
       <div className='flex gap-4 w-full'>
-        <div className='w-[70%]'>
+        <div className='w-[70%] mb-6'>
           <List />
           <Pagination />
         </div>
@@ -37,6 +37,7 @@ const HomePage: React.FC = () => {
             content={acreages}
             title='Xem theo diện tích'
           />
+          <RelatedPost />
         </div>
       </div>
     </div>

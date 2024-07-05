@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { apiGetAllPosts, apiGetPostsLimit } from '../../services/post';
-import { I_Post } from '../../intefaces/post';
+import { I_Post } from '../../types/post';
 
 interface Props {
     posts: I_Post[] | []

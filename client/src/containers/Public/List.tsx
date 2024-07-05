@@ -23,7 +23,7 @@ const List: React.FC = () => {
   }, [searchParams]);
 
   return (
-    <div className='w-full p-2 bg-white shadow-md rounded-md border-[1px] border-[#dedede] px-6'>
+    <div className='w-full p-2 bg-white shadow-sm rounded-md border-[1px] border-[#dedede] px-6'>
       <h1 className='text-xl font-semibold'>Tổng 122.075 kết quả</h1>
       <div className='space-x-2 my-3'>
         <span>Sắp xếp :</span>

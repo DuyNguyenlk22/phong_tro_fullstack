@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { I_categories } from '../../intefaces/categories';
+import { I_categories } from '../../types/categories';
 import { apiGetCategories } from '../../services/category';
 import { apiGetAcreages, apiGetPrices } from '../../services/app';
 

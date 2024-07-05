@@ -10,7 +10,7 @@ import {
   RentalRoom,
   RentalSpace,
 } from './containers/Public/Index';
-import { path } from './ultils/constant';
+import { path } from './utils/constant';
 
 export const App: React.FC = () => {
   return (

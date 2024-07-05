@@ -1,7 +1,7 @@
-export { default as Header } from "./Header";
+export { default as Header } from "../../components/Header";
 export { default as Login } from "./Login";
 export { default as Home } from "./Home";
-export { default as Navbar } from "./Navbar";
+export { default as Navbar } from "../../components/Navbar";
 export { default as RentalHouse } from "./RentalHouse";
 export { default as RentalRoom } from "./RentalRoom";
 export { default as RentalApartment } from "./RentalApartment";

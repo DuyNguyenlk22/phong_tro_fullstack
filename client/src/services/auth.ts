@@ -1,5 +1,5 @@
 import axiosConfig from "./axiosConfig"
-import { I_register } from '../intefaces/register';
+import { I_register } from '../types/register';
 
 export const apiRegister = (data: I_register | undefined) =>
     new Promise(async (resolve, reject) => {

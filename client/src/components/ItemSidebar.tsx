@@ -1,8 +1,8 @@
 import React, { Fragment, memo } from 'react';
-import icons from '../ultils/icons';
-import { I_categories } from '../intefaces/categories';
+import icons from '../utils/icons';
+import { I_categories } from '../types/categories';
 import { NavLink, createSearchParams, useLocation, useNavigate } from 'react-router-dom';
-import { formatVietnameseToString } from '../ultils/common/format';
+import { formatVietnameseToString } from '../utils/common/format';
 
 const { MdNavigateNext } = icons;
 

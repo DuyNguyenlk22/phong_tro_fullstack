@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import PageNumber from '../../components/PageNumber';
-import icons from '../../ultils/icons';
+import icons from '../../utils/icons';
 import { useSearchParams } from 'react-router-dom';
 
 const { MdNavigateNext, MdChevronLeft } = icons;

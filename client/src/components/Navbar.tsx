@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { formatVietnameseToString } from '../../ultils/common/format';
+import { formatVietnameseToString } from '../utils/common/format';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../store/store';
-import { getCategories } from '../../store/slices/navSlice';
+import { AppDispatch, RootState } from '../store/store';
+import { getCategories } from '../store/slices/navSlice';
 
 const Navbar: React.FC = () => {
   const active = `block bg-third h-[40px] px-3 flex items-center text-center`;
@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav id='navbar-menu' className='w-full h-[40[px] bg-secondary'>
-      <ul className='mx-auto w-[90%] lg:w-[65%] flex text-white font-bold text-sm'>
+      <ul className='mx-auto w-[90%] lg:w-[70%] flex text-white font-bold text-sm'>
         <NavLink to={`/`} className={({ isActive }) => (isActive ? active : notActive)}>
           Trang chủ
         </NavLink>

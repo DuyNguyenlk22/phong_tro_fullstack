@@ -1,5 +1,5 @@
 import React from 'react';
-import { I_register } from '../intefaces/register';
+import { I_register } from '../types/register';
 
 type FormProps = {
   label: string;

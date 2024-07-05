@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { apiLogin, apiRegister } from '../../services/auth'
-import { I_register } from '../../intefaces/register'
+import { I_register } from '../../types/register'
 
 interface Props {
     isLoggedIn: boolean

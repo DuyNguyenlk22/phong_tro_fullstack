@@ -1,6 +1,6 @@
 import React from 'react';
 import { SearchItem } from '../../components/Index';
-import icons from '../../ultils/icons';
+import icons from '../../utils/icons';
 
 const {
   HiOutlineBuildingOffice,
@@ -14,7 +14,7 @@ const {
 
 const SearchBar: React.FC = () => {
   return (
-    <div className='p-[10px] w-[90%] lg:w-[65%] my-2 bg-fourth rounded-lg gap-2 flex-col lg:flex-row flex items-center justify-around '>
+    <div className='p-[10px] w-[90%] lg:w-[70%] my-2 bg-fourth rounded-lg gap-2 flex-col lg:flex-row flex items-center justify-around '>
       <SearchItem
         text={'Phòng trọ, nhà trọ'}
         IconPreffix={HiOutlineBuildingOffice}

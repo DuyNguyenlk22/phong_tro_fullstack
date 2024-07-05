@@ -1,21 +1,25 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       width: {
-        1100: "1100px",
+        1100: '1100px',
       },
       backgroundColor: {
-        primary: "#F5F5F5", // xám
-        secondary: "#1266dd", // xanh dương
-        third: "#f73859", // đỏ
-        fourth: "#febb02", //vàng
+        primary: '#F5F5F5', // xám
+        secondary: '#1266dd', // xanh dương
+        third: '#f73859', // đỏ
+        fourth: '#febb02', //vàng,
+        fifth: '#fff',
       },
       maxWidth: {
-        210: "210px",
-        600: "600px",
-        1100: "1100px",
+        210: '210px',
+        600: '600px',
+        1100: '1100px',
+      },
+      borderWidth: {
+        1: '1px',
       },
     },
   },

@@ -14,7 +14,7 @@ const Button: React.FC<BtnProps> = ({ text, textColor, bgColor, Icon, onClick })
     <button
       type='button'
       className={`py-2 px-4 ${textColor} ${bgColor} rounded-md outline-none 
-      ${Icon ? `flex items-center space-x-1` : ``}`}
+      ${Icon ? `flex items-center space-x-1` : ``} hover:underline`}
       onClick={onClick}>
       <span>{text}</span>
       <span> {Icon && <Icon />}</span>

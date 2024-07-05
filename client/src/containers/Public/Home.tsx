@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './Header';
-import { Navbar, SearchBar } from './Index';
+import { SearchBar } from './Index';
 import { Outlet } from 'react-router-dom';
+import { Navbar, Intro, Contact, Header } from '../../components/Index';
 
 const Home: React.FC = () => {
   return (
@@ -9,9 +9,11 @@ const Home: React.FC = () => {
       <Header />
       <Navbar />
       <SearchBar />
-      <div className='w-[90%] lg:w-[65%] flex flex-col justify-start items-start mt-3'>
+      <div className='w-[90%] lg:w-[70%] flex flex-col justify-start items-start mt-3'>
         <Outlet />
       </div>
+      <Intro />
+      <Contact />
     </div>
   );
 };

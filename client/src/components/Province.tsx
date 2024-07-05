@@ -1,5 +1,5 @@
 import React from 'react';
-import { location } from '../ultils/constant';
+import { location } from '../utils/constant';
 import { ProvinceBtn } from './Index';
 
 const Province: React.FC = () => {

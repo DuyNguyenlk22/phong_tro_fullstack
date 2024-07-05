@@ -1,9 +1,9 @@
 import React, { memo, useState } from 'react';
-import icons from '../ultils/icons';
+import icons from '../utils/icons';
 import { NavLink } from 'react-router-dom';
-import { I_Attributes } from '../intefaces/attributes';
-import { I_User } from '../intefaces/user';
-import { formatVietnameseToString } from '../ultils/common/format';
+import { I_Attributes } from '../types/attributes';
+import { I_User } from '../types/user';
+import { formatVietnameseToString } from '../utils/common/format';
 
 const { PiHeartStraightLight, PiHeartStraightFill, RiStarSFill } = icons;
 
@@ -50,7 +50,7 @@ const Item: React.FC<Props> = ({
           {images.length} ảnh
         </span>
         <span
-          className='absolute bottom-3 right-3'
+          className='absolute bottom-3 right-10'
           onMouseEnter={() => setIsHoverHeart(true)}
           onMouseLeave={() => setIsHoverHeart(false)}>
           {isHoverHeart ? (
